@@ -1,0 +1,29 @@
+  prepackaged-maven-plugin allows you to install and deploy prepackaged artifacts from a maven build.
+This is in contrast to running <code>mvn install:install</code> which takes place outside of a maven goal.
+
+  The primary use-case is where one has a CI server set up for automatic builds and deploys of generated artifacts but also a requirement to deploy prepackaged artifacts.
+
+  To use, add a build dependency to your project's pom.xml:
+
++-----
+    ...
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>@project.groupId@</groupId>
+                <artifactId>@project.artifactId@</artifactId>
+                <version>@project.version@</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>set-artifact</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            ...
+        </plugins>
+        ...
+    </build>
+    ...
++-----

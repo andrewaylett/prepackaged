@@ -8,8 +8,34 @@
     <packaging>maven-plugin</packaging>
 
     <name>prepackaged-maven-plugin Maven Plugin</name>
+    <description>
+        A Maven plugin that overrides the artifact that Maven would otherwise install.
+
+        Use when you need a 'build' that re-published an existing (prepackaged) JAR.
+    </description>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
     <url>http://prepackaged.aylett.eu</url>
+
+    <scm>
+        <connection>scm:git:https://gerrit.aylett.co.uk/p/prepackaged-maven-plugin.git</connection>
+        <developerConnection>scm:git:ssh://gerrit.aylett.co.uk:29418/prepackaged-maven-plugin.git</developerConnection>
+        <url>https://gerrit.aylett.co.uk/gitweb?p=prepackaged-maven-plugin.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Andrew Aylett</name>
+            <email>andrew@aylett.co.uk</email>
+            <url>https://blog.aylett.co.uk/</url>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -94,5 +120,28 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.3</version>
+                    <dependencies>
+                        <dependency><!-- add support for ssh/scp -->
+                            <groupId>org.apache.maven.wagon</groupId>
+                            <artifactId>wagon-ssh</artifactId>
+                            <version>1.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
+
+    <distributionManagement>
+        <site>
+            <id>prepackaged.aylett.eu</id>
+            <url>scp://prepackaged.aylett.eu/var/www/prepackaged.aylett.eu/htdocs</url>
+        </site>
+    </distributionManagement>
 </project>
