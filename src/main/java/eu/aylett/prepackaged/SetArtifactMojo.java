@@ -31,7 +31,7 @@ import java.io.File;
 @Mojo(name = "set-artifact", defaultPhase = LifecyclePhase.VERIFY)
 public class SetArtifactMojo extends AbstractMojo {
     @Parameter(defaultValue = "${basedir}/${project.artifactId}-${project.version}.jar", property = "source", required = true)
-    private File artifactFile;
+    protected File artifactFile;
 
     @Parameter(property = "project")
     protected MavenProject project;
