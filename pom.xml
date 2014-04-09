@@ -4,7 +4,7 @@
 
     <groupId>eu.aylett.prepackaged</groupId>
     <artifactId>prepackaged-maven-plugin</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>prepackaged-maven-plugin Maven Plugin</name>
