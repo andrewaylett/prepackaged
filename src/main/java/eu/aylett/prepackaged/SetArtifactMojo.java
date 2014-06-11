@@ -27,9 +27,8 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
-import java.util.ArrayList;
-
-import static com.google.common.collect.Lists.newArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Goal which copies the existing jar
@@ -46,8 +45,8 @@ public class SetArtifactMojo extends AbstractMojo {
     protected ArtifactFactory artifactFactory;
 
     public void execute() throws MojoExecutionException {
-        ArrayList<String> list = newArrayList(artifactFile.getName().split("\\."));
-        String packaging = list.get(list.size()-1);
+        List<String> list = Arrays.asList(artifactFile.getName().split("\\."));
+        String packaging = list.get(list.size() - 1);
         getLog().info("Setting packaging to " + packaging);
         project.setPackaging(packaging);
 
